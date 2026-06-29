@@ -1,0 +1,243 @@
+/* Super vs Orchids — Design System */
+
+:root {
+  --paper: #f7f5ef;
+  --ink: #0a0a0a;
+  --muted: #68645d;
+  --white: #ffffff;
+  --line: rgba(10, 10, 10, 0.12);
+  --radius-xl: 34px;
+  --shadow-soft: 0 28px 80px rgba(24, 22, 18, 0.12);
+  --shadow-hard: 0 26px 80px rgba(0, 0, 0, 0.18);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Cabinet Grotesk', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(10,10,10,0.06), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(10,10,10,0.04), transparent 55%),
+    var(--paper);
+}
+
+.page {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.ambient-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.25;
+}
+
+.paper-noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="120" height="120" filter="url(%23n)" opacity="0.04"/></svg>');
+}
+
+.shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(247,245,239,0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.brand img {
+  width: 28px;
+  height: 28px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-cta .btn {
+  padding: 10px 16px;
+}
+
+.hero {
+  padding: 180px 0 120px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.05;
+  margin: 0 auto 24px;
+  max-width: 1120px;
+}
+
+.hero-sub {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.btn {
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.btn.primary {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: var(--shadow-hard);
+}
+
+.btn.secondary {
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.media-frame {
+  margin: 0 auto;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  max-width: 1000px;
+  box-shadow: var(--shadow-soft);
+}
+
+.media-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chapter {
+  padding: 140px 0;
+}
+
+.chapter h2 {
+  font-size: 42px;
+  margin-bottom: 24px;
+}
+
+.chapter p {
+  max-width: 760px;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.compare-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.compare-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-soft);
+}
+
+.compare-card.highlight {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.compare-card ul {
+  padding-left: 18px;
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin: 64px 0;
+  grid-auto-flow: dense;
+}
+
+.bento-item {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
+}
+
+.bento-item.emphasis {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.sources .source-card {
+  margin-top: 16px;
+}
+
+.source-card a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.cta-band {
+  padding: 140px 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .hero { padding-top: 160px; }
+  .hero-actions { flex-direction: column; }
+}
